@@ -1,0 +1,5 @@
+.env
+*.env
+__pycache__/
+*.pyc
+discogs_spotify_matches.csv
