@@ -1,4 +1,5 @@
 
+
 # vinyl-nfc
 
 Sometimes you browse your records and want to listen to the artist rather than the particular album you own. This project bridges makes it easy to do that — NFC tags stuck inside record sleeves get scanned by an ESP32 reader next to the turntable, which triggers the Spotify playlist for that artist to play on a Sonos zone. Built as a way to play music you don't own on vinyl but do have on Spotify, without touching a phone.
@@ -19,3 +20,7 @@ python3 server.py
 ## Testing without hardware
 
 curl -X POST http://localhost:5050/scan -H "Content-Type: application/json" -d '{"uid": "TEST123"}'
+=======
+# Vinyl-nfc
+Tap a vinyl record against an NFC reader, hear its Spotify equivalent on Sonos.
+
