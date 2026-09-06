@@ -1,3 +1,194 @@
 {
-  "TEST123": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4bqAta"
+  "TEST123": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4bqAta",
+    "label": "Test entry"
+  },
+  "537DD9B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2Od4Lm?si=f8726bb37ddb493c",
+    "label": "Sufjan Stevens"
+  },
+  "53C4D2B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/0CsOWvSXtikVo4WNSyiijd",
+    "label": "This is Van Morrison"
+  },
+  "534BC8B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/2GZknS6GvHclrpTXDUp5Bv",
+    "label": "This Is John Coltrane"
+  },
+  "5366C3B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0mykqk?si=2a7342355ab84ddf",
+    "label": "This Is J Dilla"
+  },
+  "539BBBB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2T8209?si=b00273a7365c4ec7",
+    "label": "Tyler, The Creator"
+  },
+  "5325B5B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO18oyZi?si=c0f8c59421034792",
+    "label": "Nas"
+  },
+  "532DABB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4ukhRC?si=dab5ff475b764d47",
+    "label": "Jamie xx"
+  },
+  "53BE55B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1E4yge6TeWRWrA?si=628a9057e7cd44ef",
+    "label": "Rupa radio playlist"
+  },
+  "539E4FB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3GmPLr?si=955672d9701b4cdb",
+    "label": "Little Simz"
+  },
+  "53E14BB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3n6lhM?si=hnccsgpRR7i2R9lI2Erghw",
+    "label": "Waxahatchee"
+  },
+  "531B44B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evNZWCMvL?si=3786d45388754a20",
+    "label": "Overmono"
+  },
+  "53763FB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2Yjd7O?si=54f2eab7ed664f01",
+    "label": "james blake"
+  },
+  "531E39B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3BaSHu?si=f688c06bee0743c5",
+    "label": "pastor barrett"
+  },
+  "53C734B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO1KSAmc?si=97d42e9ea223424d",
+    "label": "the cinematic orchestra"
+  },
+  "53FE2DB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4uvj4D?si=53ab85a7617444e7",
+    "label": "planet mu"
+  },
+  "53EBA4B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2xdllK?si=2820498698ab4016",
+    "label": "arlo parks"
+  },
+  "536296B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/3O1NpEcpTFkWNwABJug8RW?si=fb9ade1b72754e52",
+    "label": "https://open.spotify.com/playlist/3O1NpEcpTFkWNwABJug8RW?si=fb9ade1b72754e52"
+  },
+  "531C8DB9950001": {
+    "spotify_url": "https://open.spotify.com/album/2UIDGnhA2rnY7j7bx2q1lS?si=a1pBJZDZRFeICYiQetbLow",
+    "label": "habibi funk"
+  },
+  "537387B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/1QZicUIQqUSXtBHUGS2XMm?si=8a15695c03524431",
+    "label": "the saadia label"
+  },
+  "539A7FB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3TBqUz?si=2f77f620eb834bd7",
+    "label": "jakie shane"
+  },
+  "53F679B9950001": {
+    "spotify_url": "https://open.spotify.com/album/04D0mW6vcrkyirMVF7x1cy?si=LZOq67AcQW-u-Q2FRX3Y6A",
+    "label": "eccentric label"
+  },
+  "53F070B9950001": {
+    "spotify_url": "https://open.spotify.com/album/04D0mW6vcrkyirMVF7x1cy?si=LZOq67AcQW-u-Q2FRX3Y6A",
+    "label": "total reggae"
+  },
+  "53626BB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO09XVCM?si=c700b0b2a79949d1",
+    "label": "ziggy marley"
+  },
+  "53DC65B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2ancu7?si=0cc7e822238b470c",
+    "label": "isacc hayes"
+  },
+  "531F5EB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO1Xa1Op?si=3080a0bf9f7c4bee",
+    "label": "ali farka toure"
+  },
+  "53CE58B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO27vOVT?si=fcba838e71234989",
+    "label": "teddy grossman"
+  },
+  "53984DB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4xXdS0?si=8f0d1253f72c416d",
+    "label": "nina simone"
+  },
+  "53FD46B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2w6kJC?si=91fef68af2d848ab",
+    "label": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2w6kJC?si=91fef68af2d848ab"
+  },
+  "534142B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO28XKLA?si=0079d62ba373473e",
+    "label": "art pepper"
+  },
+  "53E33AB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO28XKLA?si=0079d62ba373473e",
+    "label": "John coltrane"
+  },
+  "537636B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4io5gw?si=1006b398d6344840",
+    "label": "gil evans"
+  },
+  "538430B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO07FLl6?si=8dc219c5267b4ed7",
+    "label": "miles davis"
+  },
+  "53772CB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO07FLl6?si=8dc219c5267b4ed7",
+    "label": "miles davis"
+  },
+  "533826B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO07zaak?si=aa05465bd3424a3c",
+    "label": "pink floyd"
+  },
+  "530C2AB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO48MYmY?si=cdac715de5e8495b",
+    "label": "simon and garfunkel"
+  },
+  "53D924B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO00KN2M?si=95020826ec2a430e",
+    "label": "fleetwood mac"
+  },
+  "539722B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO36QygU?si=b2d3ce6a414b4fd0",
+    "label": "joni mitchell"
+  },
+  "53E61DB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0L6UdW?si=1e7239619f914477",
+    "label": "andy warhol"
+  },
+  "53C01AB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4bqAta?si=8debf431cff1429a",
+    "label": "bob dylan"
+  },
+  "53F215B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4bqAta?si=8debf431cff1429a",
+    "label": "bob dylan"
+  },
+  "536613B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4bqAta?si=8debf431cff1429a",
+    "label": "bob dylan"
+  },
+  "534C21B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0dpkcn?si=e89b0b51abba40c1",
+    "label": "sun ra"
+  },
+  "539210B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2jwTwx?si=26ba3af16d934e01",
+    "label": "the red garland trio"
+  },
+  "53D21BB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO15Oxjn?si=e99832c7ff16462b",
+    "label": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO15Oxjn?si=e99832c7ff16462b"
+  },
+  "53C918B9950001": {
+    "spotify_url": "https://open.spotify.com/album/2l4UUhxE1e60VwhJpd26Jv?si=92rCWwo5SL-H1tUbSZ8ytQ",
+    "label": "immortal marster pieces"
+  },
+  "53AC12B9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO1UOPMB?si=85a8880841ea48e1",
+    "label": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO1UOPMB?si=85a8880841ea48e1"
+  },
+  "53300FB9950001": {
+    "spotify_url": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4anXYA?si=2ac601eb8c7d4291",
+    "label": "the dubliners"
+  }
 }
