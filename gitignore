@@ -1,7 +1,0 @@
-.env
-*.env
-__pycache__/
-*.pyc
-discogs_spotify_matches.csv
-secrets.h
-firmware/**/secrets.h
