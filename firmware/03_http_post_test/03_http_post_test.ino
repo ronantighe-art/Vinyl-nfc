@@ -51,7 +51,7 @@ void sendScan(const String& uid) {
   http.begin(url);
   http.addHeader("Content-Type", "application/json");
 
-  String body = "{\"uid\": \"" + uid + "\"}";
+  String body = "{\"uid\": \"" + uid + "\", \"room\": \"" + String(ROOM_NAME) + "\"}";
   int responseCode = http.POST(body);
 
   if (responseCode > 0) {

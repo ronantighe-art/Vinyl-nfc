@@ -20,7 +20,7 @@ import time
 import base64
 import requests
 import soco
-from soco.plugins.sharelink import ShareLinkPlugin
+from soco.plugins.sharelink import ShareLinkPlugin, SpotifyShare
 from flask import Flask, request, jsonify, render_template_string
 
 app = Flask(__name__)
@@ -28,6 +28,21 @@ app = Flask(__name__)
 MAPPINGS_FILE = os.path.join(os.path.dirname(__file__), "mappings.json")
 MATCHES_CSV = os.path.join(os.path.dirname(__file__), "discogs_spotify_matches.csv")
 ZONE_NAME = "Office"
+
+# Reader room name (sent by each StickC as "room") -> Sonos zone name.
+# A scan with no room, or an unknown room, falls back to ZONE_NAME.
+ROOMS = {
+    "living": "Office",
+    "nia": "Nia Room",
+}
+
+# Per-room Spotify account for Sonos. "sn" is the account serial number in the
+# queue address, "token" is the account part of the metadata token (read from a
+# Sonos Favorite saved under that account). Rooms not listed use whatever
+# default account Sonos picks.
+ROOM_SPOTIFY = {
+    "nia": {"sn": "7", "token": "d6c9b478"},
+}
 
 SPOTIFY_CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
 SPOTIFY_CLIENT_SECRET = os.environ.get("SPOTIFY_CLIENT_SECRET")
@@ -70,10 +85,18 @@ def get_zone(name=ZONE_NAME, timeout=10, retries=2):
     for attempt in range(retries):
         zones = soco.discover(timeout=timeout)
         if zones:
-            matches = [z for z in zones if z.player_name == name]
+            matches = []
+            available = []
+            for z in zones:
+                try:
+                    zname = z.player_name
+                except Exception:
+                    continue  # unreachable or sleeping speaker, skip it
+                available.append(zname)
+                if zname == name:
+                    matches.append(z)
             if matches:
                 return matches[0]
-            available = [z.player_name for z in zones]
             raise RuntimeError(f"Zone '{name}' not found. Available: {available}")
         time.sleep(1)
     raise RuntimeError("No Sonos zones found on network after retries")
@@ -110,8 +133,45 @@ def get_spotify_token():
 # scans. Partly a safeguard against accidental double-taps, partly a test
 # of the theory that rapid back-to-back Spotify resolution calls through
 # Sonos might be what's triggering the occasional auth/link breakage.
-last_play_time = {"at": 0}
+last_play_time = {}  # zone name -> timestamp of last successful play
 MIN_SECONDS_BETWEEN_PLAYS = 5
+
+
+def enqueue_spotify(zone, spotify_url, account=None):
+    """Adds a Spotify link to the zone's queue. With no sn this is the stock
+    SoCo ShareLinkPlugin call. With an sn, it builds the same request by
+    hand and adds sid/flags/sn to the URI so Sonos uses that account."""
+    if not account:
+        ShareLinkPlugin(zone).add_share_link_to_queue(spotify_url)
+        return
+    sn = account["sn"]
+    token = account["token"]
+
+    service = SpotifyShare()
+    if not service.canonical_uri(spotify_url):
+        raise RuntimeError(f"Unsupported URI: {spotify_url}")
+    share_type, encoded_uri = service.extract(spotify_url)
+    magic = service.magic()[share_type]
+
+    flags = {"track": 8232, "episode": 8232, "album": 8268}.get(share_type, 8300)
+    enqueue_uri = f"{magic['prefix']}{encoded_uri}?sid=9&flags={flags}&sn={sn}"
+    metadata = (
+        '<DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/" '
+        'xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/" '
+        'xmlns:r="urn:schemas-rinconnetworks-com:metadata-1-0/" '
+        'xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">'
+        f'<item id="{magic["key"]}{encoded_uri}" parentID="-1" restricted="true">'
+        f'<dc:title></dc:title><upnp:class>{magic["class"]}</upnp:class>'
+        '<desc id="cdudn" nameSpace="urn:schemas-rinconnetworks-com:metadata-1-0/">'
+        f'SA_RINCON2311_X_#Svc2311-{token}-Token</desc></item></DIDL-Lite>'
+    )
+    zone.avTransport.AddURIToQueue([
+        ("InstanceID", 0),
+        ("EnqueuedURI", enqueue_uri),
+        ("EnqueuedURIMetaData", metadata),
+        ("DesiredFirstTrackNumberEnqueued", 0),
+        ("EnqueueAsNext", 0),
+    ])
 
 
 @app.route("/scan", methods=["POST"])
@@ -121,7 +181,10 @@ def scan():
     if not uid:
         return jsonify({"error": "missing 'uid' field"}), 400
 
-    time_since_last = time.time() - last_play_time["at"]
+    room = (data.get("room") or "").strip().lower()
+    zone_name = ROOMS.get(room, ZONE_NAME)
+
+    time_since_last = time.time() - last_play_time.get(zone_name, 0)
     if time_since_last < MIN_SECONDS_BETWEEN_PLAYS:
         wait = round(MIN_SECONDS_BETWEEN_PLAYS - time_since_last, 1)
         return jsonify({"error": f"Too soon since last play, wait {wait}s"}), 429
@@ -138,16 +201,15 @@ def scan():
     spotify_url = entry["spotify_url"] if isinstance(entry, dict) else entry
 
     try:
-        zone = get_zone()
-        share = ShareLinkPlugin(zone)
+        zone = get_zone(zone_name)
         zone.clear_queue()
-        share.add_share_link_to_queue(spotify_url)
+        enqueue_spotify(zone, spotify_url, ROOM_SPOTIFY.get(room))
         zone.play_from_queue(0)
-        last_play_time["at"] = time.time()
+        last_play_time[zone_name] = time.time()
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-    return jsonify({"status": "playing", "uid": uid, "spotify_url": spotify_url}), 200
+    return jsonify({"status": "playing", "uid": uid, "zone": zone_name, "spotify_url": spotify_url}), 200
 
 
 @app.route("/map", methods=["POST"])
